@@ -1,21 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Soldados Lista</title>
-</head>
-<body>
-	<h2>aqui toy</h2>
-	<ul>
-		{%for p in asd%}
-			<li>{{p.Soldado.primer_nombre}}</li>
-			<li>{{Soldados_registrado.servicio_id}}</li>
-			<li>{{Soldados_registrado.cuerpo_id}}</li>
-			<li>{{Soldados_registrado.cuartel_id}}</li>
-			<li>{{Soldados_registrado.compania_id}}</li>
-		{%endfor%}
-		
-	</ul>
-	
+{% extends 'militares/base.html' %}
 
-</body>
-</html>
+{% block head_content %}
+        
+{% endblock %}
+
+{% block content %}
+<table style="border: hidden;" align="center" CELLSPACING="20" WIDTH="40%">
+<thead>
+	<tr>
+		<th>nombres</th>
+		<th>servicio</th>
+		<th>cuerpo</th>
+		<th>cuartel</th>
+		<th>compañia</th>
+	</tr>
+</thead>
+	{% for soldado in object_list %}
+<tbody>
+	<tr>
+		<td>{{soldado.primer_nombre}}</td>
+		<td>{{soldado.cuartel.ubicacion}}</td>
+	</tr>
+</tbody>
+	{% endfor %}
+</table>
+
+
+
+{% endblock %}

@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'servicio_militar.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'servicio_militar',
+        'NAME': 'servi',
         'USER': 'postgres',
-        'PASSWORD': '3.3',
-        'HOST': '127.0.0.1',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }

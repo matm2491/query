@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Soldado, Cuartel, Servicio, Cuerpos_del_ejercito, Compañia, Soldados_registrado
 
 class SoldadoAdmin(admin.ModelAdmin):
-    fields = ['primer_nombre', 'segundo_nombre', 'primer_apellido', 'segundo_apellido', 'graduacion']
+    fields = ['primer_nombre', 'segundo_nombre', 'primer_apellido', 'segundo_apellido', 'graduacion', 'cedula', 'cuartel']
     list_display = ('primer_nombre', 'segundo_nombre', 'primer_apellido', 'segundo_apellido', 'graduacion')
     search_fields = ['primer_nombre','segundo_nombre', 'primer_apellido', 'segundo_apellido']
 

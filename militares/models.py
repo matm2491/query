@@ -1,30 +1,34 @@
 from django.db import models
 
-class Soldado(models.Model):
-	primer_nombre    = models.CharField(max_length=50)
-	segundo_nombre   = models.CharField(max_length=50)
-	primer_apellido  = models.CharField(max_length=50)
-	segundo_apellido = models.CharField(max_length=50)
-	graduacion       = models.DateTimeField('date published')
-	
-	class Meta:
-		db_table = 'sm_soldados'
 
-	def __str__(self):
-		return "%s" % (self.primer_nombre)
-		pass
+		
 
 class Cuartel (models.Model):
 	nombre    = models.CharField(max_length=80)
 	ubicacion = models.CharField(max_length=160)
+	
 	
 	class Meta:
 		db_table = 'sm_cuartel'
 
 	def __str__(self):
 		return "%s" % (self.nombre)
-		pass
+		
 
+
+class Soldado(models.Model):
+	primer_nombre    = models.CharField(max_length=50)
+	segundo_nombre   = models.CharField(max_length=50)
+	primer_apellido  = models.CharField(max_length=50)
+	segundo_apellido = models.CharField(max_length=50)
+	cedula           = models.IntegerField(max_length=20)
+	graduacion       = models.DateTimeField('date published')
+	cuartel          = models.ForeignKey(Cuartel, on_delete=models.CASCADE)
+	class Meta:
+		db_table = 'sm_soldados'
+
+	def __str__(self):
+		return "%s" % (self.primer_nombre)
 	
 class Servicio (models.Model):
 	nombre      = models.CharField(max_length=80)
@@ -35,7 +39,7 @@ class Servicio (models.Model):
 
 	def __str__(self):
 		return "%s %s" % (self.nombre, self.descripcion)
-		pass
+		
 
 class Cuerpos_del_ejercito (models.Model):
 	denominacion = models.CharField(max_length=80)
@@ -45,7 +49,7 @@ class Cuerpos_del_ejercito (models.Model):
 
 	def __str__(self):
 		return "%s" % (self.denominacion)
-		pass
+		
 
 class Compañia (models.Model):
 	numero_compania = models.CharField(max_length=80)
@@ -56,7 +60,7 @@ class Compañia (models.Model):
 
 	def __str__(self):
 		return "%s" % (self.numero_compania)
-		pass
+		
 
 class Soldados_registrado(models.Model):
 	soldado  = models.ForeignKey(Soldado, on_delete=models.CASCADE)

@@ -6,7 +6,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Instanciamos el modelo 'Postres' para poder usarlo en nuestras Vistas CRUD
-from .models import Soldados_registrado , Soldado
+from .models import Soldado
 
 # Nos sirve para redireccionar despues de una acción revertiendo patrones de expresiones regulares 
 from django.urls import reverse
@@ -24,9 +24,8 @@ def index(request):
     return HttpResponse("Hola bb")
 
 class soldado_registro(ListView):
-	model = Soldados_registrado
-	#asd = Soldados_registrado.objects.select_related('Soldado','Cuartel', 'Servicio', 'Cuerpos_del_ejercito', 'Compañia')
-	asd = Soldados_registrado.objects.select_related('soldado')
+	model = Soldado
+	
 
 def base(request):
     return render(request, 'militares/base.html', {"hola":"good"})
